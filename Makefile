@@ -29,6 +29,9 @@ qrels/trec12-news.tsv:qrels/trec12.tsv
 queries/trec45-%.tsv: contrib/queries/trec45 src/extractQueries/extractQueries
 	mkdir -p queries
 	cat contrib/queries/trec45/* | src/extractQueries/extractQueries queries/trec45
+	grep -v ^672 queries/trec45-t.tsv > queries/trec45-t.tsv.tmp; mv queries/trec45-t.tsv.tmp queries/trec45-t.tsv
+	grep -v ^672 queries/trec45-d.tsv > queries/trec45-d.tsv.tmp; mv queries/trec45-d.tsv.tmp queries/trec45-d.tsv
+	grep -v ^672 queries/trec45-n.tsv > queries/trec45-n.tsv.tmp; mv queries/trec45-n.tsv.tmp queries/trec45-n.tsv
 
 qrels/trec45.tsv: contrib/qrels/trec45
 	mkdir -p qrels
