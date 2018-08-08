@@ -280,6 +280,8 @@ more
 moreover
 most
 mostly
+mr
+mrs
 much
 must
 my
