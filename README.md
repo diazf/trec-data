@@ -23,6 +23,7 @@ For each set of queries (i.e. trec12, trec45, and nyt), we generate title, descr
 ```
 qrels/     relevance judgements for test collections
 queries/   queries for tests collections
+qlogs/     queries with no associated relevance judgments
 misc/      miscellaneous data for experiments
 ```
 
