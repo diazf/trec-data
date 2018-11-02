@@ -1,4 +1,4 @@
-QUERY_SETS=trec12 trec12-news trec45 trec45-news nyt
+QUERY_SETS=trec12 trec12-news trec45 trec45-news nyt msmarco
 QLOGS_SETS=mq
 QUERIES=$(addsuffix -t.tsv,$(QUERY_SETS))
 QUERIES+=$(addsuffix -d.tsv,$(QUERY_SETS))
@@ -55,6 +55,19 @@ qrels/nyt.tsv: contrib/qrels/nyt
 	cat contrib/qrels/nyt/* | awk '($$NF>0)' |sed "s/ /	/g" > qrels/nyt.tsv
 
 #
+# msmarco
+#
+queries/msmarco-%.tsv: contrib/queries/msmarco 
+	mkdir -p queries
+	cp contrib/queries/msmarco/queries.train.tsv queries/msmarco-train-t.tsv
+	cp contrib/queries/msmarco/queries.dev.tsv queries/msmarco-dev-t.tsv
+
+qrels/msmarco.tsv: contrib/qrels/msmarco
+	mkdir -p qrels
+	cp contrib/qrels/msmarco/qrels.train.tsv qrels/msmarco-train.tsv
+	cp contrib/qrels/msmarco/qrels.dev.tsv qrels/msmarco-dev.tsv
+
+#
 # qlogs
 #
 qlogs/mq.tsv: contrib/qlogs/mq
@@ -72,10 +85,16 @@ src/extractQueries/extractQueries:
 contrib/queries/trec12:
 	make -C contrib/queries
 
+contrib/queries/msmarco:
+	make -C contrib/queries
+
 contrib/qlogs/mq:
 	make -C contrib/qlogs
 
 contrib/qrels/trec12:
+	make -C contrib/qrels
+
+contrib/qrels/msmarco:
 	make -C contrib/qrels
 
 clean:

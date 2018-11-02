@@ -1,4 +1,4 @@
-all: trec12 trec45 nyt
+all: trec12 trec45 nyt msmarco
 	
 trec12: 
 	mkdir trec12
@@ -14,5 +14,10 @@ nyt:
 	mkdir nyt
 	cd nyt; curl -O https://trec.nist.gov/data/core/qrels.txt
 
+msmarco:
+	mkdir msmarco
+	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarco/qrels.train.tsv
+	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarco/qrels.dev.tsv
+
 clean:
-	rm -Rf trec12 trec45 nyt
+	rm -Rf trec12 trec45 nyt msmarco
