@@ -14,8 +14,9 @@ The build process will download and process qrels from NIST servers for the foll
 * trec45: the [Robust 2004](https://trec.nist.gov/data/robust/04.guidelines.html) topics associated with  documents on [TREC Disks 4 and 5](https://trec.nist.gov/data/qa/T8_QAdata/disks4_5.html) _except_ the Congressional Record.
 * trec45-news: the [Robust 2004](https://trec.nist.gov/data/robust/04.guidelines.html) topics associated with _only news_ documents on [TREC Disks 4 and 5](https://trec.nist.gov/data/qa/T8_QAdata/disks4_5.html).  This only includes the FBIS, FT, and LA Times documents in the qrels.
 * nyt: the [Common Core 2017](https://trec.nist.gov/data/core2017.html) topics associated with _all_ documents in the [New York Times Annotated Corpus](https://catalog.ldc.upenn.edu/ldc2008t19).
+* msmarco: the topics associated with documents in the [MS MARCO dataset](http://www.msmarco.org/).
 
-For each set of queries (i.e. trec12, trec45, and nyt), we generate title, description, and narrative queries. 
+For each set of queries (i.e. trec12, trec45, and nyt), we generate title, description, and narrative queries.  The MS Marco dataset only has title queries.
 
 
 ## Datasets
