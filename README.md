@@ -43,3 +43,15 @@ make
 ## Related
 
 * [trec_eval](https://github.com/usnistgov/trec_eval)
+
+## Citation
+
+```
+@online{diaz:trec-data,
+author = {Diaz, Fernando},
+title = {trec-data},
+year = {2018},
+url = {https://github.com/diazf/trec-data}
+}
+```
+
