@@ -7,7 +7,7 @@ A simple package to download and standardize [TREC](https://trec.nist.gov) exper
 * qrels for the full corpus and popular "news-only" subsets
 * standard stopword list (indri)
 
-The build process will download and process qrels from NIST servers for the following datasets,
+The build process will download and process qrels from NIST and other servers for the following datasets,
 
 * trec12: topics 51-200 associated with _all_ documents on [Tipster Disks 1 and 2](https://catalog.ldc.upenn.edu/LDC93T3A).
 * trec12-news: topics 51-200 associated with _only news_ documents on [Tipster Disks 1 and 2](https://catalog.ldc.upenn.edu/LDC93T3A).  This only includes the AP, WSJ, and Ziff-Davis documents in the qrels.
@@ -15,8 +15,11 @@ The build process will download and process qrels from NIST servers for the foll
 * trec45-news: the [Robust 2004](https://trec.nist.gov/data/robust/04.guidelines.html) topics associated with _only news_ documents on [TREC Disks 4 and 5](https://trec.nist.gov/data/qa/T8_QAdata/disks4_5.html).  This only includes the FBIS, FT, and LA Times documents in the qrels.
 * nyt: the [Common Core 2017](https://trec.nist.gov/data/core2017.html) topics associated with _all_ documents in the [New York Times Annotated Corpus](https://catalog.ldc.upenn.edu/ldc2008t19).
 * msmarco: the topics associated with documents in the [MS MARCO dataset](http://www.msmarco.org/).
+* mq: 60k unjudged queries associated with the [Million Query Track](https://trec.nist.gov/data/million.query.html).
+* aol: ~7.5M unique unjudged queries associated with a filtered version of the [AOL Query Log](https://jeffhuang.com/search_query_logs.html).  **Please be prepared to deal with the ethical issues raised in using this dataset.**
 
 For each set of queries (i.e. trec12, trec45, and nyt), we generate title, description, and narrative queries.  The MS Marco dataset only has title queries.
+
 
 
 ## Datasets

@@ -1,4 +1,4 @@
-all:mq
+all:mq aol
 	
 
 mq:
@@ -7,5 +7,12 @@ mq:
 	curl -s https://trec.nist.gov/data/million.query/08/08.million-query-topics.10001-20000.gz | gunzip > mq/08.million-query-topics.10001-20000
 	curl -s https://trec.nist.gov/data/million.query/09/09.mq.topics.20001-60000.gz | gunzip > mq/09.mq.topics.20001-60000
 
+aol:
+	mkdir aol
+	curl -s http://www.cim.mcgill.ca/~dudek/206/Logs/AOL-user-ct-collection/aol-data.tar.bz2 > aol/aol-data.tar.bz2
+	cd aol
+	tar xzvf aol-data.tar.bz2
+	cd ..
+
 clean:
-	rm -Rf mq
+	rm -Rf mq aol
