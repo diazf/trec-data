@@ -58,4 +58,6 @@ year = {2018},
 url = {https://github.com/diazf/trec-data}
 }
 ```
+## Notes
+Thanks to [Hamed Zamani](https://github.com/hamed-zamani) and [Mostafa Dehghani](https://github.com/MostafaDehghani) for help with AOL processing logic.
 
