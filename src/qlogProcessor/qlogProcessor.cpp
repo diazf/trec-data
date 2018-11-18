@@ -44,7 +44,7 @@ main(int argc, char *argv[]){
 				if (i>0)output += " ";
 				output += tokens[i];
 			}
-			if (output != lastOutput){
+			if ((output != lastOutput)&&(output.size() > 3) && (output.size() < 250)){
 				std::cout << output << std::endl;
 			}
 			lastOutput = output;
