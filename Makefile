@@ -76,18 +76,18 @@ qlogs/mq.tsv: contrib/qlogs/mq
 	iconv -c contrib/qlogs/mq/08.million-query-topics.10001-20000 | sed "s/[^:]*://g" >> qlogs/mq.tsv
 	iconv -c contrib/qlogs/mq/09.mq.topics.20001-60000 | sed "s/[^:]*://g" >> qlogs/mq.tsv
 
-qlogs/aol.tsv: contrib/qlogs/aol
+qlogs/aol.tsv: contrib/qlogs/aol src/qlogProcessor/qlogProcessor
 	mkdir -p qlogs
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-01.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-01.tsv 
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-02.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-02.tsv 
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-03.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-03.tsv 
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-04.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-04.tsv 
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-05.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-05.tsv  
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-06.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-06.tsv  
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-07.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-07.tsv  
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-08.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-08.tsv  
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-09.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-09.tsv  
-	awk -F"\t" '(NR>1){print tolower($$2);}' contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-10.txt | egrep -v "\.com|\.org|\.gov|\.net|http|www\.|\.edu" | iconv -c  | sed "s/[^0-9a-z ]/ /g" | tr -s " " | sed "s/^ //g" | sed "s/ $$//g" | grep [a-z0-9] | sort |uniq > qlogs/aol-10.tsv   
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-01.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-01.tsv 
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-02.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-02.tsv 
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-03.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-03.tsv 
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-04.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-04.tsv 
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-05.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-05.tsv  
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-06.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-06.tsv  
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-07.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-07.tsv  
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-08.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-08.tsv  
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-09.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-09.tsv  
+	cat contrib/qlogs/aol/AOL-user-ct-collection/user-ct-test-collection-10.txt | src/qlogProcessor/qlogProcessor -S misc/stopwords.txt | sort |uniq > qlogs/aol-10.tsv   
 	sort qlogs/aol-*.tsv  | uniq  > qlogs/aol.tsv
 	rm -f qlogs/aol-*.tsv
 
@@ -97,6 +97,9 @@ qlogs/aol.tsv: contrib/qlogs/aol
 #
 src/extractQueries/extractQueries:
 	make -C src/extractQueries/
+
+src/qlogProcessor/qlogProcessor:
+	make -C src/qlogProcessor/
 
 contrib/queries/trec12:
 	make -C contrib/queries
@@ -119,3 +122,4 @@ clean:
 	make -C contrib/qlogs clean
 	make -C contrib/qrels clean
 	make -C src/extractQueries clean
+	make -C src/qlogProcessor clean

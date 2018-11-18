@@ -16,7 +16,7 @@ The build process will download and process qrels from NIST and other servers fo
 * nyt: the [Common Core 2017](https://trec.nist.gov/data/core2017.html) topics associated with _all_ documents in the [New York Times Annotated Corpus](https://catalog.ldc.upenn.edu/ldc2008t19).
 * msmarco: the topics associated with documents in the [MS MARCO dataset](http://www.msmarco.org/).
 * mq: 60k unjudged queries associated with the [Million Query Track](https://trec.nist.gov/data/million.query.html).
-* aol: ~7.5M unique unjudged queries associated with a filtered version of the [AOL Query Log](https://jeffhuang.com/search_query_logs.html).  **Please be prepared to deal with the ethical issues raised in using this dataset.**
+* aol: ~7.5M unique unjudged queries associated with a [filtered](https://dl.acm.org/citation.cfm?id=3080832) version of the [AOL Query Log](https://jeffhuang.com/search_query_logs.html).  **Please be prepared to deal with the ethical issues raised in using this dataset.**
 
 For each set of queries (i.e. trec12, trec45, and nyt), we generate title, description, and narrative queries.  The MS Marco dataset only has title queries.
 
@@ -42,6 +42,7 @@ make
 * [make](https://www.gnu.org/software/make/)
 * [curl](https://curl.haxx.se/)
 * [flex](https://github.com/westes/flex)
+* [boost](https://www.boost.org/)
 
 ## Related
 
