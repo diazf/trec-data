@@ -16,8 +16,8 @@ nyt:
 
 msmarco:
 	mkdir msmarco
-	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarco/qrels.train.tsv
-	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarco/qrels.dev.tsv
+	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarcoranking/qrels.train.tsv
+	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarcoranking/qrels.dev.tsv
 
 clean:
 	rm -Rf trec12 trec45 nyt msmarco
