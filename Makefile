@@ -60,12 +60,12 @@ qrels/nyt.tsv: contrib/qrels/nyt
 queries/msmarco-%.tsv: contrib/queries/msmarco 
 	mkdir -p queries
 	cp contrib/queries/msmarco/queries.train.tsv queries/msmarco-train-t.tsv
-	cp contrib/queries/msmarco/queries.dev.tsv queries/msmarco-dev-t.tsv
+	./src/scripts/msmarco-qid-filter.py contrib/queries/msmarco/top1000.dev.tsv contrib/queries/msmarco/queries.dev.tsv | iconv -c > queries/msmarco-dev-t.tsv
 
 qrels/msmarco.tsv: contrib/qrels/msmarco
 	mkdir -p qrels
 	cp contrib/qrels/msmarco/qrels.train.tsv qrels/msmarco-train.tsv
-	cp contrib/qrels/msmarco/qrels.dev.tsv qrels/msmarco-dev.tsv
+	./src/scripts/msmarco-qid-filter.py contrib/queries/msmarco/top1000.dev.tsv contrib/qrels/msmarco/qrels.dev.tsv > qrels/msmarco-dev.tsv
 
 #
 # qlogs
