@@ -17,8 +17,7 @@ nyt:
 
 msmarco:
 	mkdir msmarco
-	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarco/queries.train.tsv
-	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarco/queries.dev.tsv
+	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarcoranking/queries.tar.gz ; tar xzvf queries.tar.gz ; rm -f queries.tar.gz
 	curl -s https://msmarco.blob.core.windows.net/msmarcoranking/top1000.dev.tar.gz | tar -xOzf - > msmarco/top1000.dev.tsv
 
 clean:
