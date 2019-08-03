@@ -10,9 +10,7 @@ mq:
 aol:
 	mkdir aol
 	curl -s http://www.cim.mcgill.ca/~dudek/206/Logs/AOL-user-ct-collection/aol-data.tar.bz2 > aol/aol-data.tar.bz2
-	cd aol
-	bzcat aol-data.tar.bz2 | tar xf - 
-	cd ..
+	cd aol; bzcat aol-data.tar.bz2 | tar xf - ; cd ..
 
 clean:
 	rm -Rf mq aol
