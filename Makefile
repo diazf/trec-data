@@ -71,7 +71,7 @@ queries/msmarco-%.tsv: contrib/queries/msmarco
 	cat contrib/queries/msmarco/queries.train.tsv | iconv -c > queries/msmarco-train-t.tsv
 	./src/scripts/msmarco-qid-filter.py contrib/queries/msmarco/top1000.dev.tsv contrib/queries/msmarco/queries.dev.tsv | iconv -c > queries/msmarco-dev-t.tsv
 
-qrels/msmarco-%.tsv: contrib/qrels/msmarco
+qrels/msmarco-%.tsv: contrib/qrels/msmarco contrib/queries/msmarco
 	mkdir -p qrels
 	cp contrib/qrels/msmarco/qrels.train.tsv qrels/msmarco-train.tsv
 	./src/scripts/msmarco-qid-filter.py contrib/queries/msmarco/top1000.dev.tsv contrib/qrels/msmarco/qrels.dev.tsv > qrels/msmarco-dev.tsv
