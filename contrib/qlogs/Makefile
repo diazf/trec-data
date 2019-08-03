@@ -11,7 +11,7 @@ aol:
 	mkdir aol
 	curl -s http://www.cim.mcgill.ca/~dudek/206/Logs/AOL-user-ct-collection/aol-data.tar.bz2 > aol/aol-data.tar.bz2
 	cd aol
-	tar xzvf aol-data.tar.bz2
+	bunzip2 aol-data.tar.bz2
 	cd ..
 
 clean:
