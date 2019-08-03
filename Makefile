@@ -135,6 +135,9 @@ contrib/queries/msmarco-docs:
 contrib/qlogs/mq:
 	make -C contrib/qlogs
 
+contrib/qlogs/aol:
+	make -C contrib/qlogs
+
 contrib/qrels/trec12:
 	make -C contrib/qrels
 
