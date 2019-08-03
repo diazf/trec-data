@@ -5,8 +5,8 @@ QLOGS_SETS=mq aol
 QUERIES=$(addsuffix -t.tsv,$(QUERY_SETS))
 QUERIES+=$(addsuffix -d.tsv,$(QUERY_SETS))
 QUERIES+=$(addsuffix -n.tsv,$(QUERY_SETS))
-QUERIES+=$(addsuffix train-t.tsv,$(SPLIT_QUERY_SETS))
-QUERIES+=$(addsuffix dev-t.tsv,$(SPLIT_QUERY_SETS))
+QUERIES+=$(addsuffix -train-t.tsv,$(SPLIT_QUERY_SETS))
+QUERIES+=$(addsuffix -dev-t.tsv,$(SPLIT_QUERY_SETS))
 
 QUERY_PATHS=$(addprefix queries/,$(QUERIES))
 
