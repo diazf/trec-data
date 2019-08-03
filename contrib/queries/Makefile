@@ -1,4 +1,4 @@
-all:trec12 trec45 nyt msmarco
+all:trec12 trec45 nyt msmarco msmarco-docs
 	
 
 trec12:
@@ -20,5 +20,11 @@ msmarco:
 	cd msmarco; curl -O https://msmarco.blob.core.windows.net/msmarcoranking/queries.tar.gz ; tar xzvf queries.tar.gz ; rm -f queries.tar.gz
 	curl -s https://msmarco.blob.core.windows.net/msmarcoranking/top1000.dev.tar.gz | tar -xOzf - > msmarco/top1000.dev.tsv
 
+msmarco-docs:
+	mkdir msmarco-docs
+	curl -s https://msmarco.blob.core.windows.net/msmarcoranking/msmarco-doctrain-queries.tsv.gz | gunzip > msmarco-docs/msmarco-doctrain-queries.tsv
+	curl -s https://msmarco.blob.core.windows.net/msmarcoranking/msmarco-docdev-queries.tsv.gz | gunzip > msmarco-docs/msmarco-docdev-queries.tsv
+	curl -s https://msmarco.blob.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz | gunzip > msmarco-docs/msmarco-test2019-queries.tsv
+
 clean:
-	rm -Rf trec12 trec45 nyt msmarco
+	rm -Rf trec12 trec45 nyt msmarco msmarco-docs

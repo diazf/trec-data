@@ -1,4 +1,4 @@
-QUERY_SETS=trec12 trec12-news trec45 trec45-news nyt msmarco
+QUERY_SETS=trec12 trec12-news trec45 trec45-news nyt msmarco msmarco-docs
 QLOGS_SETS=mq aol
 QUERIES=$(addsuffix -t.tsv,$(QUERY_SETS))
 QUERIES+=$(addsuffix -d.tsv,$(QUERY_SETS))
@@ -59,13 +59,26 @@ qrels/nyt.tsv: contrib/qrels/nyt
 #
 queries/msmarco-%.tsv: contrib/queries/msmarco 
 	mkdir -p queries
-	cp contrib/queries/msmarco/queries.train.tsv queries/msmarco-train-t.tsv
+	cat contrib/queries/msmarco/queries.train.tsv | iconv -c > queries/msmarco-train-t.tsv
 	./src/scripts/msmarco-qid-filter.py contrib/queries/msmarco/top1000.dev.tsv contrib/queries/msmarco/queries.dev.tsv | iconv -c > queries/msmarco-dev-t.tsv
 
 qrels/msmarco.tsv: contrib/qrels/msmarco
 	mkdir -p qrels
 	cp contrib/qrels/msmarco/qrels.train.tsv qrels/msmarco-train.tsv
 	./src/scripts/msmarco-qid-filter.py contrib/queries/msmarco/top1000.dev.tsv contrib/qrels/msmarco/qrels.dev.tsv > qrels/msmarco-dev.tsv
+
+#
+# msmarco-docs
+#
+queries/msmarco-docs-%.tsv: contrib/queries/msmarco-docs
+	mkdir -p queries
+	cat contrib/queries/msmarco-docs/msmarco-doctrain-queries.tsv | iconv -c > queries/msmarco-docs-train-t.tsv
+	cat contrib/queries/msmarco-docs/msmarco-docdev-queries.tsv | iconv -c > queries/msmarco-docs-dev-t.tsv
+
+qrels/msmarco-docs.tsv: contrib/qrels/msmarco-docs
+	mkdir -p qrels
+	cp contrib/qrels/msmarco-docs/msmarco-doctrain-qrels.tsv qrels/msmarco-docs-train.tsv
+	cp contrib/qrels/msmarco-docs/msmarco-docdev-qrels.tsv qrels/msmarco-docs-dev.tsv
 
 #
 # qlogs
@@ -107,6 +120,9 @@ contrib/queries/trec12:
 contrib/queries/msmarco:
 	make -C contrib/queries
 
+contrib/queries/msmarco-docs:
+	make -C contrib/queries
+
 contrib/qlogs/mq:
 	make -C contrib/qlogs
 
@@ -114,6 +130,9 @@ contrib/qrels/trec12:
 	make -C contrib/qrels
 
 contrib/qrels/msmarco:
+	make -C contrib/qrels
+
+contrib/qrels/msmarco-docs:
 	make -C contrib/qrels
 
 clean:
