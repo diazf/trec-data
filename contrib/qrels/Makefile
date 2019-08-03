@@ -21,8 +21,8 @@ msmarco:
 
 msmarco-docs:
 	mkdir msmarco-docs
-	cd msmarco-docs; curl -O https://msmarco.blob.core.windows.net/msmarcoranking/msmarco-doctrain-qrels.tsv.gz
-	cd msmarco-docs; curl -O https://msmarco.blob.core.windows.net/msmarcoranking/msmarco-docdev-qrels.tsv.gz
+	curl -s https://msmarco.blob.core.windows.net/msmarcoranking/msmarco-doctrain-qrels.tsv.gz | gunzip > msmarco-docs/msmarco-doctrain-qrels.tsv
+	curl -s https://msmarco.blob.core.windows.net/msmarcoranking/msmarco-docdev-qrels.tsv.gz | gunzip > msmarco-docs/msmarco-docdev-qrels.tsv
 
 clean:
 	rm -Rf trec12 trec45 nyt msmarco msmarco-docs
