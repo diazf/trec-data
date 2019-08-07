@@ -1,6 +1,7 @@
 QUERY_SETS=trec12 trec12-news trec45 trec45-news nyt
 SPLIT_QUERY_SETS=msmarco msmarco-docs
 QLOGS_SETS=mq aol
+QA_SETS=squad
 
 QUERIES=$(addsuffix -t.tsv,$(QUERY_SETS))
 QUERIES+=$(addsuffix -d.tsv,$(QUERY_SETS))
@@ -18,7 +19,10 @@ QRELS_PATHS=$(addprefix qrels/,$(QRELS))
 QLOGS=$(addsuffix .tsv,$(QLOGS_SETS))
 QLOGS_PATHS=$(addprefix qlogs/,$(QLOGS))
 
-all:$(QRELS_PATHS) $(QUERY_PATHS) $(QLOGS_PATHS)
+QA=$(addsuffix .tsv,$(QA_SETS))
+QA_PATHS=$(addprefix qa/,$(QA))
+
+all:$(QRELS_PATHS) $(QUERY_PATHS) $(QLOGS_PATHS) #$(QA_PATHS)
 	
 
 #
@@ -83,6 +87,7 @@ queries/msmarco-docs-%.tsv: contrib/queries/msmarco-docs
 	mkdir -p queries
 	cat contrib/queries/msmarco-docs/msmarco-doctrain-queries.tsv | iconv -c > queries/msmarco-docs-train-t.tsv
 	cat contrib/queries/msmarco-docs/msmarco-docdev-queries.tsv | iconv -c > queries/msmarco-docs-dev-t.tsv
+	cat contrib/queries/msmarco-docs/msmarco-test2019-queries.tsv | iconv -c > queries/msmarco-docs-test-t.tsv
 
 qrels/msmarco-docs-%.tsv: contrib/qrels/msmarco-docs
 	mkdir -p qrels
@@ -113,6 +118,10 @@ qlogs/aol.tsv: contrib/qlogs/aol src/qlogProcessor/qlogProcessor
 	sort qlogs/aol-*.tsv  | uniq  > qlogs/aol.tsv
 	rm -f qlogs/aol-*.tsv
 
+
+qa/squad.tsv: contrib/qa/squad
+	mkdir -p qa
+	src/scripts/process-squad-qa.py contrib/qa/squad/train-v2.0.json
 
 #
 # support
